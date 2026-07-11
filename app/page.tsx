@@ -4,6 +4,7 @@ import NextSection from "@/components/NextSection";
 export default function Home() {
   return (<>
     <Hero />
+    <NextSection></NextSection>
     </>
   );
 }

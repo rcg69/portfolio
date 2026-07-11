@@ -15,7 +15,7 @@ export default function WarningRibbon({
 }) {
   return (
     <motion.img
-      src="/ribbon.png"
+      src="/ribbon1.png"
       alt=""
       draggable={false}
       className="absolute select-none pointer-events-none"
@@ -40,12 +40,12 @@ export default function WarningRibbon({
 
       transition={{
         x: {
-          duration: 6,
+          duration: 100,
           repeat: Infinity,
           ease: "linear",
         },
         y: {
-          duration: 4,
+          duration: 100,
           repeat: Infinity,
           ease: "easeInOut",
         },

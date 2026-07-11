@@ -20,7 +20,7 @@ export default function Hero() {
       <section className="relative h-screen w-full overflow-hidden">
 
     <Header />
-
+{/* 
     <WarningRibbon
   top="120px"
   left="80px"
@@ -40,7 +40,7 @@ export default function Hero() {
   zIndex={5}
   duration={8}
 />
-
+ */}
     <img
       src="/ram.png"
       alt="Hero"
@@ -61,8 +61,8 @@ export default function Hero() {
 
 </section>
         <img
-    src="/ram.png"
-    alt="Hero"
+    src="/ram1.png"
+    alt="Hero1"
     className="
       absolute
       bottom-0
@@ -114,8 +114,11 @@ export default function Hero() {
   w-full
 "
         >
-          Crafting the Future{" "}
-      <span className="bg-gradient-to-r from-[#D90429] via-[#FF3C00] to-[#FF6A00] bg-clip-text text-transparent">
+           <span className="bg-gradient-to-r from-[#FFFFFF] via-[#FFFFFF] to-[#FF6A00] bg-clip-text text-transparent">
+ Crafting the Future
+</span>{" "}
+         
+      <span className="bg-gradient-to-r from-[#FFFFFF] via-[#FFFFFF] to-[#FF6A00] bg-clip-text text-transparent">
   One Pixel at a Time.
 </span>
         </motion.h1>
