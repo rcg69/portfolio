@@ -1,144 +1,134 @@
 "use client";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Header from "@/components/header";
 import WarningRibbon from "@/components/WarningRibbon";
+
+// Computes how much to scale the hero image down so it clears
+// the mobile header instead of being cropped behind it.
+function useHeroScale() {
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    function computeScale() {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+
+      // Match this to your actual mobile header height (.hnb-mobile-bar)
+      const headerHeight = width < 768 ? 72 : 0;
+
+      const availableHeight = height - headerHeight;
+      const nextScale = availableHeight / height;
+
+      setScale(nextScale);
+    }
+
+    computeScale();
+    window.addEventListener("resize", computeScale);
+    window.addEventListener("orientationchange", computeScale);
+
+    return () => {
+      window.removeEventListener("resize", computeScale);
+      window.removeEventListener("orientationchange", computeScale);
+    };
+  }, []);
+
+  return scale;
+}
+
 export default function Hero() {
-  return (<>
-    <section className="relative h-screen w-full overflow-hidden">
-      {/* Background Video */}
-      {/* <video
-        className="absolute inset-0 h-full w-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-      >
-        <source src="/ram.mp4" type="video/mp4" />
-        
-      </video> */}
+  const scale = useHeroScale();
+
+  const heroImageStyle = {
+    transform: `translateX(-50%) scale(${scale})`,
+    transformOrigin: "bottom center",
+  };
+
+  return (
+    <>
       <section className="relative h-screen w-full overflow-hidden">
+        <section className="relative h-screen w-full overflow-hidden">
+          <Header />
 
-    <Header />
-{/* 
-    <WarningRibbon
-  top="120px"
-  left="80px"
-  rotate={-5}
-  scale={1.5}
-  width="1400px"
-  opacity={0.9}
-  zIndex={5}
-/>
-<WarningRibbon
-  top="20px"
-  left="78px"
-  rotate={10}
-  scale={1.5}
-  width="1400px"
-  opacity={0.9}
-  zIndex={5}
-  duration={8}
-/>
- */}
-    <img
-      src="/ram.png"
-      alt="Hero"
-      className="
-      absolute
-      bottom-0
-      left-1/2
-      -translate-x-1/2
-      h-[100vh]
-      w-auto
-      object-contain
-      z-10
-      pointer-events-none
-      "
-    />
+          <img
+            src="/ram.png"
+            alt="Hero"
+            style={heroImageStyle}
+            className="
+              absolute
+              bottom-0
+              left-1/2
+              h-screen
+              w-auto
+              object-contain
+              z-10
+              pointer-events-none
+              transition-transform
+              duration-200
+              ease-out
+            "
+          />
+        </section>
 
-    {/* Hero Text */}
-
-</section>
         <img
-    src="/ram1.png"
-    alt="Hero1"
-    className="
-      absolute
-      bottom-0
-      left-1/2
-      -translate-x-1/2
-      h-[100vh]
-      w-auto
-      object-contain
-      pointer-events-none
-      select-none
-      z-10
-    "
-  />
-
-      {/* Dark overlay for text legibility — heavier on the right where copy sits */}
-
-      {/* Hero copy — anchored bottom-right, clear of subject and nav on every screen size */}
-     <div
-  className="
-    absolute
-    bottom-[4%]
-    right-[4%]
-
-    w-[60vw]
-    
-
-    z-20
-
-    flex
-    flex-col
-    items-end
-    text-right
-  "
->
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          src="/ram1.png"
+          alt="Hero1"
+          style={heroImageStyle}
           className="
-  font-[Syne]
-  font-black
-  text-white
+            absolute
+            bottom-0
+            left-1/2
+            h-screen
+            w-auto
+            object-contain
+            pointer-events-none
+            select-none
+            z-10
+            transition-transform
+            duration-200
+            ease-out
+          "
+        />
 
-  leading-[0.95]
-  tracking-[-0.03em]
-
-  text-[clamp(1.5rem,7vw,13rem)]
-
-  w-full
-"
-        >
-           <span className="bg-gradient-to-r from-[#FFFFFF] via-[#FFFFFF] to-[#FF6A00] bg-clip-text text-transparent">
- Crafting the Future
-</span>{" "}
-         
-      <span className="bg-gradient-to-r from-[#FFFFFF] via-[#FFFFFF] to-[#FF6A00] bg-clip-text text-transparent">
-  One Pixel at a Time.
-</span>
-        </motion.h1>
-
-{/*         <motion.p
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+        {/* Hero copy — anchored bottom-right, clear of subject and nav on every screen size */}
+        <div
           className="
-            mt-4 text-black
-            text-[clamp(0.9rem,1.3vw,1.1rem)]
-            max-w-[38ch] ml-auto
-            leading-relaxed
+            absolute
+            bottom-[4%]
+            right-[4%]
+            left-[4%]
+            sm:left-auto
+            sm:w-[60vw]
+            z-20
+            flex
+            flex-col
+            items-end
+            text-right
           "
         >
-          IRAH TECH crafts high-performance web apps, storefronts, and brand
-          systems for businesses ready to grow.
-        </motion.p> */}
-      </div>
-    </section></>
-   
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="
+              font-[Syne]
+              font-black
+              text-white
+              leading-[0.95]
+              tracking-[-0.03em]
+              text-[clamp(1.5rem,7vw,13rem)]
+              w-full
+            "
+          >
+            <span className="bg-gradient-to-r from-[#FFFFFF] via-[#FFFFFF] to-[#FF6A00] bg-clip-text text-transparent">
+              Crafting the Future
+            </span>{" "}
+            <span className="bg-gradient-to-r from-[#FFFFFF] via-[#FFFFFF] to-[#FF6A00] bg-clip-text text-transparent">
+              One Pixel at a Time.
+            </span>
+          </motion.h1>
+        </div>
+      </section>
+    </>
   );
 }

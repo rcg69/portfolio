@@ -72,27 +72,31 @@ export default function NextSection() {
       {/* Wrapper */}
       <div className="w-[99%] h-[80%] flex flex-col gap-4">
 
-        {/* Heading */}
-        <Text
-          size="text-4xl"
-          weight="font-bold"
-          color="text-white"
-          
-        >
-          My Projects
-        </Text>
-        <Text
-  position="absolute"
-  bottom="20px"
-  right="20px"
-  size="text-3xl"
-  weight="font-bold"
-  color="text-black"
->
-  Bottom Right
-</Text>
+        <div className="group inline-block cursor-pointer">
+  <Text
+    size="text-7xl"
+    weight="font-bold"
+    color="text-white"
+  >
+    My Projects
+  </Text>
+
+  <span
+  className="
+    mt-2 block h-[2px] w-70 rounded-full
+    bg-black
+    transition-all duration-300 ease-in-out
+
+    group-hover:h-[5px]
+    group-hover:bg-gradient-to-r
+    group-hover:from-[#DC2F02]
+    group-hover:via-[#FF7B00]
+    group-hover:to-[#FFD60A]
+  "
+></span>
+</div>
         {/* Cards Container */}
-        <div className="flex-1 bg-[#DC2F02] p-[3px] md:p-[6px] w-[calc(100%-2px)] h-[calc(100%-2px)] mx-auto my-auto">
+        <div className="flex-1 bg-black p-[3px] md:p-[6px] w-[calc(100%-2px)] h-[calc(100%-2px)] mx-auto my-auto">
   <div className="grid h-full grid-cols-2 grid-rows-[1fr_1.2fr] gap-[3px] md:gap-[6px] md:flex">
             <Cards
   image="/irah.png"
@@ -120,6 +124,7 @@ export default function NextSection() {
 />
 
           </div>
+          
         </div>
 
       </div>

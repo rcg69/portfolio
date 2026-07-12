@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/header";
+import LayoutClient from "@/components/LayoutClient";
 
-import { gelasio } from "@/lib/fonts";
+import { gelasio,alumniSansCollegiateOne } from "@/lib/fonts";
 
 export const metadata: Metadata = {
   title: "Ram Charan | Full Stack Developer",
@@ -35,10 +36,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={gelasio.variable}>
+    <html
+      lang="en"
+      className={`${gelasio.variable} ${alumniSansCollegiateOne.variable}`}
+    >
       <body>
-        <Header />
-        {children}
+       {/*  <LayoutClient> */}
+          <Header />
+          {children}
+       {/*  </LayoutClient> */}
       </body>
     </html>
   );

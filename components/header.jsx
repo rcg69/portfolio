@@ -2,17 +2,19 @@
 import { useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  useInView,
+  AnimatePresence,
+  useScroll,
+  useMotionValueEvent,
+} from "framer-motion";
 
 const links = [
   { href: "/work", label: "Work" },
-   { href: "/tech", label: "Tech" },
-     { href: "/process", label: "Process" },
-
+  { href: "/tech", label: "Tech" },
+  { href: "/process", label: "Process" },
   { href: "/contact", label: "Contact" },
-
-
-
 ];
 
 // Parent controls stagger timing, logo fires first then links one by one
@@ -44,16 +46,57 @@ const mobileLinkVariants = {
   },
 };
 
+// Hides on scroll-down, reveals on scroll-up — matches the fade/slide
+// language used elsewhere in the site (fadeUp etc.)
+const mobileBarVariants = {
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.35, ease: [0.25, 0.1, 0.25, 1] },
+  },
+  hidden: {
+    y: "-100%",
+    opacity: 0,
+    transition: { duration: 0.35, ease: [0.25, 0.1, 0.25, 1] },
+  },
+};
+
 export default function Header() {
   const rootRef = useRef(null);
   const inView = useInView(rootRef, { once: true, margin: "-10% 0px" });
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileBarVisible, setMobileBarVisible] = useState(true);
+
+  const { scrollY } = useScroll();
+  const lastScrollY = useRef(0);
+
+  useMotionValueEvent(scrollY, "change", (current) => {
+    const previous = lastScrollY.current;
+    const diff = current - previous;
+
+    // Ignore tiny jitters (momentum scroll / rubber-banding on iOS)
+    if (Math.abs(diff) < 4) return;
+
+    // Always show near the very top of the page
+    if (current < 80) {
+      setMobileBarVisible(true);
+    } else if (diff > 0) {
+      // scrolling down
+      setMobileBarVisible(false);
+      if (mobileOpen) setMobileOpen(false);
+    } else {
+      // scrolling up
+      setMobileBarVisible(true);
+    }
+
+    lastScrollY.current = current;
+  });
 
   const closeMobile = () => setMobileOpen(false);
 
   return (
     <>
-<style>{`
+      <style>{`
   .hnb-root {
     font-family: var(--font-gelasio);
 
@@ -136,6 +179,8 @@ export default function Header() {
     justify-content: space-between;
     padding: 18px 20px;
     font-family: var(--font-gelasio);
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(12px);
   }
 
   .hnb-mobile-logo {
@@ -243,17 +288,19 @@ export default function Header() {
         <motion.div variants={itemVariants}>
           <Link href="/" className="hnb-logo">
             <Image src="/logo.png" alt="IRAH Logo" width={400} height={400} />
-            
           </Link>
         </motion.div>
-
       </motion.nav>
 
       {/* ── MOBILE BAR ── */}
-      <div className="hnb-mobile-bar">
+      <motion.div
+        className="hnb-mobile-bar"
+        variants={mobileBarVariants}
+        initial="visible"
+        animate={mobileBarVisible ? "visible" : "hidden"}
+      >
         <Link href="/" className="hnb-mobile-logo" onClick={closeMobile}>
           <Image src="/logo.png" alt="IRAH Logo" width={200} height={200} />
-       
         </Link>
 
         <button
@@ -263,7 +310,7 @@ export default function Header() {
         >
           <span /><span /><span />
         </button>
-      </div>
+      </motion.div>
 
       {/* ── MOBILE MENU ── */}
       <AnimatePresence>
