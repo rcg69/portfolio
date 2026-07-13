@@ -295,12 +295,22 @@ export function CinematicFooter() {
           <div className="footer-aurora absolute left-1/2 top-1/2 h-[60vh] w-[80vw] -translate-x-1/2 -translate-y-1/2 animate-footer-breathe rounded-[50%] blur-[80px] pointer-events-none z-0" />
 
           {/* Giant background text */}
-          <div
-            ref={giantTextRef}
-            className="footer-giant-bg-text absolute -bottom-[5vh] left-1/2 -translate-x-1/2 whitespace-nowrap z-0 pointer-events-none select-none"
-          >
-            RCG
-          </div>
+  <div
+  ref={giantTextRef}
+  className="
+    footer-giant-bg-text
+    absolute
+    bottom-[2vh] md:-bottom-[5vh]
+    left-1/2
+    -translate-x-1/2
+    whitespace-nowrap
+    z-0
+    pointer-events-none
+    select-none
+  "
+>
+  RCG
+</div>
 
           {/* 1. Diagonal Sleek Marquee (Top of footer) */}
 {/*           <div className="absolute top-12 left-0 w-full overflow-hidden border-y border-border/50 bg-background/60 backdrop-blur-md py-4 z-10 -rotate-2 scale-110 shadow-2xl">
@@ -424,22 +434,32 @@ export function CinematicFooter() {
           <div className="relative z-20 w-full pb-8 px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
             
             {/* Copyright */}
-<div className="text-muted-foreground text-[10px] md:text-xs font-semibold tracking-widest uppercase order-2 md:order-1">
+<div className="hidden md:block text-muted-foreground text-xs font-semibold tracking-widest uppercase order-2 md:order-1">
   © {new Date().getFullYear()} RCG. All rights reserved.
 </div>
 
  
 
             {/* Back to top */}
-            <MagneticButton
-              as="button"
-              onClick={scrollToTop}
-              className="w-12 h-12 rounded-full footer-glass-pill flex items-center justify-center text-muted-foreground hover:text-foreground group order-3"
-            >
-              <svg className="w-5 h-5 transform group-hover:-translate-y-1.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
-              </svg>
-            </MagneticButton>
+<MagneticButton
+  as="button"
+  onClick={scrollToTop}
+  className="hidden md:flex w-12 h-12 rounded-full footer-glass-pill items-center justify-center text-muted-foreground hover:text-foreground group order-3"
+>
+  <svg
+    className="w-5 h-5 transform group-hover:-translate-y-1.5 transition-transform duration-300"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="M5 10l7-7m0 0l7 7m-7-7v18"
+    />
+  </svg>
+</MagneticButton>
 
           </div>
         </footer>
