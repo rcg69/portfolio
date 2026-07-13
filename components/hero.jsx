@@ -71,7 +71,7 @@ export default function Hero() {
         </section>
 
         <img
-          src="/ram1.png"
+          src="/ram3.png"
           alt="Hero1"
           style={heroImageStyle}
           className="

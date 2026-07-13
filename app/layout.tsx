@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/header";
 import LayoutClient from "@/components/LayoutClient";
-
+import {CinematicFooter} from "@/components/footer";
 import { gelasio,alumniSansCollegiateOne } from "@/lib/fonts";
 
 export const metadata: Metadata = {
@@ -41,10 +41,11 @@ export default function RootLayout({
       className={`${gelasio.variable} ${alumniSansCollegiateOne.variable}`}
     >
       <body>
-       {/*  <LayoutClient> */}
+       {/*  <LayoutClient>  */}
           <Header />
           {children}
-       {/*  </LayoutClient> */}
+          <CinematicFooter></CinematicFooter>
+   {/*   </LayoutClient> */}
       </body>
     </html>
   );

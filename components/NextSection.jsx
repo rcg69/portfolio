@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-
+import FullText from "@/components/fulltext";
 function Cards({ image, title, className, speed = 80,bg = "bg-black",text="white" }) {
   const ref = useRef(null);
 
@@ -66,7 +66,7 @@ function Text({
 
 
 export default function NextSection() {
-  return (
+  return (<>
     <section className="relative h-screen w-full overflow-hidden bg-black flex items-center justify-center">
 
       {/* Wrapper */}
@@ -130,5 +130,6 @@ export default function NextSection() {
       </div>
 
     </section>
+    </>
   );
 }

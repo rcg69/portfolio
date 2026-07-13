@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import Loader from "./loader";
 
 export default function LayoutClient({ children }) {
@@ -9,14 +10,17 @@ export default function LayoutClient({ children }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 3000); // Adjust duration
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <>
-      {loading && <Loader />}
+      <AnimatePresence mode="wait">
+        {loading && <Loader key="loader" />}
+      </AnimatePresence>
+
       {!loading && children}
     </>
   );

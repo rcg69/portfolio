@@ -13,7 +13,17 @@ const fadeUp = {
     transition: { duration: 0.8, delay, ease: [0.25, 0.1, 0.25, 1] },
   }),
 };
+function StoryBlock({ children, className = "" }) {
+  return (
+    <div className={`flex items-stretch gap-6 ${className}`}>
+      <div className="flex-1">
+        {children}
+      </div>
 
+      <span className="w-[2px] self-stretch rounded-full bg-[#DC2F02] shrink-0" />
+    </div>
+  );
+}
 // Desktop-only: each paragraph fades in as it enters the viewport
 // and fades out as it scrolls past — old context dissolves as new appears.
 function ScrollFadeParagraph({ children, className = "" }) {
@@ -100,17 +110,20 @@ export default function Home1() {
               not my best work, but it&apos;s the milestone that started
               everything.
             </Text>
-
+             <span className="mt-1 h-28 w-[2px] bg-[#DC2F02] shrink-0 rounded-full" />
             {/* Desktop: full text, scroll-driven crossfade per paragraph */}
             <div className="hidden lg:flex lg:flex-col lg:gap-10">
+                <StoryBlock>
               <ScrollFadeParagraph className="text-2xl font-medium text-white leading-9 text-right">
                 Anvaya was my first real web project. When I started, I knew
                 almost nothing about web development. React, Node.js,
                 routing, APIs—everything was new to me. I relied heavily on
                 ChatGPT, experimenting with every suggestion and learning
                 through constant trial and error.
+                
               </ScrollFadeParagraph>
-
+              </StoryBlock>
+              <StoryBlock>
               <ScrollFadeParagraph className="text-2xl font-medium text-white leading-9 text-right">
                 The website wasn&apos;t built in a single attempt. It took six
                 complete rebuilds over the course of one and a half months
@@ -118,7 +131,8 @@ export default function Home1() {
                 I gradually learned the fundamentals of React, Node.js,
                 debugging, and how web applications actually come together.
               </ScrollFadeParagraph>
-
+</StoryBlock>
+              <StoryBlock>
               <ScrollFadeParagraph className="text-2xl font-medium text-white leading-9 text-right">
                 Looking back, I could easily rebuild or improve Anvaya today,
                 but I&apos;ve deliberately left it untouched. It represents
@@ -126,13 +140,13 @@ export default function Home1() {
                 feature, and imperfect implementation reminds me of the
                 persistence that shaped my journey.
               </ScrollFadeParagraph>
-
+</StoryBlock> <StoryBlock>
               <ScrollFadeParagraph className="text-2xl font-bold text-white leading-9 text-right">
                 Anvaya isn&apos;t my best project. It&apos;s my first
                 milestone—the foundation that sparked everything that
                 followed.
               </ScrollFadeParagraph>
-
+</StoryBlock>
               <motion.a
                 href="https://anvaya-dm8j.onrender.com/"
                 target="_blank"
