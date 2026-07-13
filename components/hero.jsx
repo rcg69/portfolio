@@ -6,6 +6,7 @@ import WarningRibbon from "@/components/WarningRibbon";
 
 // Computes how much to scale the hero image down so it clears
 // the mobile header instead of being cropped behind it.
+
 function useHeroScale() {
   const [scale, setScale] = useState(1);
 
@@ -37,59 +38,49 @@ function useHeroScale() {
 }
 
 export default function Hero() {
-  const scale = useHeroScale();
-
-  const heroImageStyle = {
-    transform: `translateX(-50%) scale(${scale})`,
-    transformOrigin: "bottom center",
-  };
+ 
 
   return (
     <>
       <section className="relative h-screen w-full overflow-hidden">
         <section className="relative h-screen w-full overflow-hidden">
           <Header />
-
-          <img
-            src="/ram.png"
-            alt="Hero"
-            style={heroImageStyle}
-            className="
-              absolute
-              bottom-0
-              left-1/2
-              h-screen
-              w-auto
-              object-contain
-              z-10
-              pointer-events-none
-              transition-transform
-              duration-200
-              ease-out
-            "
-          />
+<img
+  src="/ram3.png"
+  alt="Hero"
+  className="
+    absolute
+    bottom-0
+    left-1/2
+    -translate-x-1/2
+    h-[calc(100dvh-72px)]
+    md:h-screen
+    w-auto
+    object-contain
+    pointer-events-none
+    z-10
+  "
+/>
         </section>
-
+<div className="relative h-screen pt-10">
         <img
-          src="/ram3.png"
-          alt="Hero1"
-          style={heroImageStyle}
-          className="
-            absolute
-            bottom-0
-            left-1/2
-            h-screen
-            w-auto
-            object-contain
-            pointer-events-none
-            select-none
-            z-10
-            transition-transform
-            duration-200
-            ease-out
-          "
-        />
-
+  src="/ram3.png"
+  alt="Hero1"
+  className="
+    absolute
+    bottom-0
+    left-1/2
+    -translate-x-1/2
+    h-[calc(100dvh-72px)]
+    md:h-screen
+    w-auto
+    object-contain
+    pointer-events-none
+    select-none
+    z-10
+  "
+/>
+</div>
         {/* Hero copy — anchored bottom-right, clear of subject and nav on every screen size */}
         <div
           className="
@@ -116,7 +107,7 @@ export default function Hero() {
               text-white
               leading-[0.95]
               tracking-[-0.03em]
-              text-[clamp(1.5rem,7vw,13rem)]
+              text-[clamp(6rem,7vw,10rem)]
               w-full
             "
           >

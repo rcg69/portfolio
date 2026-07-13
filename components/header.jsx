@@ -168,20 +168,20 @@ export default function Header() {
 
   /* ── MOBILE BAR ── */
 
-  .hnb-mobile-bar {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 9999;
-    align-items: center;
-    justify-content: space-between;
-    padding: 18px 20px;
-    font-family: var(--font-gelasio);
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(12px);
-  }
+ .hnb-mobile-bar {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+
+  background: transparent;
+  backdrop-filter: none;
+}
 
   .hnb-mobile-logo {
     display: flex;
