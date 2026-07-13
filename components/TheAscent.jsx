@@ -83,7 +83,7 @@ export default function TheAscent() {
 
         <div className="relative lg:sticky lg:top-24 h-[50vh] sm:h-[60vh] lg:h-[80vh] w-full">
           <ImageContainer
-            src="/ram1.png"
+            src="/ram3.png"
             width="100%"
             height="100%"
             objectFit="contain"

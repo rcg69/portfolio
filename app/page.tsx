@@ -15,7 +15,7 @@ export default function Home() {
      <Home1 />
      <TheAscent></TheAscent>
       <Services />
-   
+   <NextSection/>
           {/* <TurnLayoutWrapper
         firstComponent={<FullText text="THE Turn" />}
         secondComponent={<SecondComponent />}
