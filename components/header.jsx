@@ -71,26 +71,24 @@ export default function Header() {
   const lastScrollY = useRef(0);
 
   useMotionValueEvent(scrollY, "change", (current) => {
-    const previous = lastScrollY.current;
-    const diff = current - previous;
+  const previous = lastScrollY.current;
+  const diff = current - previous;
 
-    // Ignore tiny jitters (momentum scroll / rubber-banding on iOS)
-    if (Math.abs(diff) < 4) return;
+  if (Math.abs(diff) < 4) return;
 
-    // Always show near the very top of the page
-    if (current < 80) {
-      setMobileBarVisible(true);
-    } else if (diff > 0) {
-      // scrolling down
-      setMobileBarVisible(false);
-      if (mobileOpen) setMobileOpen(false);
-    } else {
-      // scrolling up
-      setMobileBarVisible(true);
+  // Show only at the very top of the page
+  if (current < 80) {
+    setMobileBarVisible(true);
+  } else {
+    setMobileBarVisible(false);
+
+    if (mobileOpen) {
+      setMobileOpen(false);
     }
+  }
 
-    lastScrollY.current = current;
-  });
+  lastScrollY.current = current;
+});
 
   const closeMobile = () => setMobileOpen(false);
 
