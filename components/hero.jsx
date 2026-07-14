@@ -102,14 +102,16 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="
-              font-[Syne]
-              font-black
-              text-white
-              leading-[0.95]
-              tracking-[-0.03em]
-              text-[clamp(6rem,7vw,10rem)]
-              w-full
-            "
+  font-[Syne]
+  font-black
+  text-white
+  leading-[0.9]
+  tracking-[-0.03em]
+  text-[clamp(3rem,12vw,5rem)]
+  sm:text-[clamp(4rem,10vw,7rem)]
+  lg:text-[clamp(6rem,7vw,13rem)]
+  w-full
+"
           >
             <span className="bg-gradient-to-r from-[#FFFFFF] via-[#FFFFFF] to-[#FF6A00] bg-clip-text text-transparent">
               Crafting the Future
