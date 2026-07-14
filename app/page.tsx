@@ -7,20 +7,17 @@ import TurnLayoutWrapper from "@/components/TurnLayoutWrapper";
 import SecondComponent from "@/components/SecondComponent";
 import Services from "@/components/services";
 import { Timeline } from "@/components/scrollhone";
-
+import { Gallery6 } from "@/components/projects";
 export default function Home() {
   return (<>
   
     <Hero />
+    <Services />
+    <TheAscent></TheAscent>
      <Home1 />
-     <TheAscent></TheAscent>
-      <Services />
-   <NextSection/>
-          {/* <TurnLayoutWrapper
-        firstComponent={<FullText text="THE Turn" />}
-        secondComponent={<SecondComponent />}
-      /> */}
-     {/*  <Timeline /> */}
+     
+      
+      <Gallery6/>
   
     </>
   );

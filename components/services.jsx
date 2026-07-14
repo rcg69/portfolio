@@ -1,31 +1,78 @@
 "use client";
-
+import Image from "next/image";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import FullText from "@/components/fulltext";
 
-function ServiceCard({ title, description }) {
+function ServiceCard({
+  title,
+  description,
+  src = "",
+  points = [],
+  number = "01",
+}) {
   return (
     <motion.div
-      whileHover={{ y: -8, scale: 1.02 }}
-      transition={{ duration: 0.3 }}
-      className="flex flex-col justify-between rounded-2xl border border-neutral-800 bg-neutral-950 p-6 sm:p-7 lg:p-8"
+      whileHover={{ y: -10, scale: 1.02 }}
+      transition={{ duration: 0.35 }}
+      className="group relative flex min-h-[650px] flex-col overflow-hidden border border-neutral-800 bg-neutral-950 p-8 transition-all duration-500 hover:border-[#DC2F02] hover:shadow-[0_0_50px_rgba(220,47,2,0.18)]"
     >
-      <div>
-        <h3 className="mb-3 font-[Syne] text-xl font-bold text-white sm:mb-4 sm:text-2xl lg:text-3xl">
+      {/* Animated Top Line */}
+      <div className="absolute left-0 top-0 h-[3px] w-0 bg-[#DC2F02] transition-all duration-500 group-hover:w-full" />
+
+      {/* Large Background Number */}
+   {/* Large Background Number */}
+<span
+  className="
+    pointer-events-none
+    absolute
+    inset-0
+    flex
+    items-center
+    justify-center
+    select-none
+    font-[Syne]
+    text-[18rem]
+    font-extrabold
+    leading-none
+    tracking-[-0.08em]
+    text-white/[0.03]
+    transition-all
+    duration-500
+    group-hover:scale-105
+    group-hover:text-[#DC2F02]/8
+  "
+>
+  {number}
+</span>
+
+      {/* Content */}
+      <div className="relative z-10">
+        <h3 className="mb-4 font-[Syne] text-3xl font-bold text-white">
           {title}
         </h3>
-        <p className="font-[Syne] text-sm leading-relaxed text-neutral-400 sm:text-base">
+
+        <p className="font-[Syne] text-[15px] leading-7 text-neutral-400">
           {description}
         </p>
+
+        <ul className="mt-8 space-y-4">
+          {points.map((point, index) => (
+            <li
+              key={index}
+              className="flex items-center gap-3 font-[Syne] text-[20px] text-neutral-300"
+            >
+              <span className="h-2.5 w-2.5 rounded-full bg-[#DC2F02] transition-transform duration-300 group-hover:scale-125" />
+              {point}
+            </li>
+          ))}
+        </ul>
       </div>
-      <button className="mt-6 w-fit border border-white px-4 py-2 font-[Syne] text-sm text-white transition hover:bg-white hover:text-black sm:mt-8 sm:px-5 sm:text-base">
-        Learn More →
-      </button>
+
+
     </motion.div>
   );
 }
-
 export default function Services() {
   const containerRef = useRef(null);
 
@@ -63,38 +110,55 @@ export default function Services() {
           <div className="mx-auto flex w-[92%] max-w-7xl flex-col gap-8 sm:w-[95%] sm:gap-10 lg:gap-12">
             {/* Heading */}
             <div>
-              <h2 className="font-[Syne] text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
+              <h2 className=" font-[Syne] text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
                 Services
               </h2>
-              <div className="mt-3 h-[3px] w-32 bg-[#DC2F02] sm:w-40 lg:w-48" />
+              <div className="mt-3 h-[3px]  w-32 bg-[#DC2F02] sm:w-40 lg:w-48" />
             </div>
 
             {/* Cards */}
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
-              <ServiceCard
-                title="Web Development"
-                description="Modern, responsive, and high-performance websites built with React, Next.js, and Tailwind CSS."
-              />
-              <ServiceCard
-                title="UI / UX Design"
-                description="Clean, intuitive interfaces focused on user experience and engaging visual design."
-              />
-              <ServiceCard
-                title="Backend Development"
-                description="Scalable REST APIs and backend systems using Spring Boot, Node.js, PostgreSQL, and MongoDB."
-              />
-              <ServiceCard
-                title="E-Commerce"
-                description="Complete online store solutions with secure authentication, payments, and admin dashboards."
-              />
-              <ServiceCard
-                title="AI Integration"
-                description="Integrate AI chatbots, RAG systems, and automation into your applications."
-              />
-              <ServiceCard
-                title="Maintenance"
-                description="Continuous support, optimization, and feature enhancements after deployment."
-              />
+            <div className="min-h-[650px] grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+             <ServiceCard
+  number="01"
+  src="/ram1.png"
+  title="Web Development"
+  description="Custom, responsive, and high-performance websites built with modern technologies."
+  points={[
+    "React & Next.js",
+    "Responsive Design",
+    "Fast Performance",
+    "Modern UI/UX",
+    "API Integration",
+  ]}
+/>
+
+<ServiceCard
+  number="02"
+  src="/ram1.png"
+  title="Web Maintenance"
+  description="Reliable support and continuous improvements after deployment."
+  points={[
+    "Bug Fixes",
+    "Security Updates",
+    "Performance Optimization",
+    "Backups",
+    "24/7 Monitoring",
+  ]}
+/>
+
+<ServiceCard
+  number="03"
+  src="/ram1.png"
+  title="SEO"
+  description="Improve your search rankings and website visibility."
+  points={[
+    "Technical SEO",
+    "On-Page Optimization",
+    "Core Web Vitals",
+    "Schema Markup",
+    "Analytics & Reports",
+  ]}
+/>
             </div>
           </div>
         </motion.section>

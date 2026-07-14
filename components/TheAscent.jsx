@@ -41,39 +41,35 @@ export default function TheAscent() {
             THE ASCENT
           </Text>
 
-          <p className="mt-6 sm:mt-8 md:mt-10 text-base sm:text-lg md:text-xl text-neutral-400 leading-7 sm:leading-8 md:leading-9">
-            Curiosity became consistency. Small experiments became real
-            applications, and every challenge became another step toward becoming a
-            full-stack engineer.
-          </p>
+          
 
           {/* Timeline Cards */}
 
           <div className="mt-10 sm:mt-14 md:mt-20 space-y-6 sm:space-y-8">
 
-            <Milestone
-              year="2024"
-              title="Frontend"
-              description="React • Next.js • Tailwind • Framer Motion"
-            />
+           <Milestone
+  year="2025"
+  title="ANVAYA"
+  description="My first full-stack project, built through six complete rebuilds and months of relentless learning. It wasn't perfect—but it laid the foundation for everything I know today."
+/>
 
-            <Milestone
-              year="2025"
-              title="Backend"
-              description="Spring Boot • Node • PostgreSQL • JWT"
-            />
+<Milestone
+  year="2025"
+  title="CMRIT IRAH"
+  description="An AI-powered college platform that unified academics, campus resources, and student services into one experience. It marked the moment my ideas evolved into real-world solutions."
+/>
 
-            <Milestone
-              year="2026"
-              title="Building Products"
-              description="IRAH TECH • AABHARNAM • Portfolio"
-            />
+<Milestone
+  year="2026"
+  title="IRAH TECH"
+  description="Co-founded a web development agency with friends, delivering modern websites and digital solutions for clients while gaining real-world experience in teamwork, leadership, and product development."
+/>
 
-            <Milestone
-              year="Today"
-              title="Full Stack Developer"
-              description="Building modern web experiences with AI."
-            />
+<Milestone
+  year="Today"
+  title="Full-Stack Developer"
+  description="Every project teaches, every challenge shapes, and every setback fuels my next breakthrough. I continue to learn, grow, and build experiences that are better than the last."
+/>
 
           </div>
 
